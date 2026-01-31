@@ -1,0 +1,19 @@
+body {
+  background-image: url('/static/images/table6.jpg');
+}  
+.loginblock{
+  background-color: rgba(188, 82, 32, 0.462);
+  width: 400px;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid rgba(188, 82, 32, 0.462);
+  border-radius: 20px;
+} 
+.createuser{
+  background-color: rgba(188, 82, 32, 0.462);
+  width: 400px;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid rgba(188, 82, 32, 0.462);
+  border-radius: 20px;
+}
