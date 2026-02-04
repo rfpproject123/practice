@@ -6,6 +6,10 @@ RFP -> static[folder]
             -.jpg file in RFP github
     -> templates[folder]
         ->mainpage.html
-        ->login.html
-        ->createUser.html
+        ->loginpage.html
+        ->createuser_page.html
         ->app.html
+
+
+
+make sure to save the files with the same name ✅
