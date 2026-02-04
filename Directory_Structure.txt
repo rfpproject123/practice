@@ -1,0 +1,11 @@
+RFP -> static[folder]
+        ->css[folder]
+            ->style.css
+            ->style2.css
+        ->images[folder]
+            -.jpg file in RFP github
+    -> templates[folder]
+        ->mainpage.html
+        ->login.html
+        ->createUser.html
+        ->app.html
