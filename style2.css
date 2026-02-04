@@ -1,0 +1,85 @@
+.navbar ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  width: 200px;
+  background-color: #f1f1f1;
+  height: 100vh;
+  position: fixed;
+}
+
+.navbar li a {
+  display: block;
+  color: black;
+  padding: 16px;
+  text-decoration: none;
+  text-align: center;
+  border-bottom: 1px solid #ddd;
+}
+
+.navbar li a:hover {
+  background-color: #555;
+  color: white;
+}   
+.modern-navbar {
+  width: 260px;
+  height: 100vh;
+  background: linear-gradient(180deg, #12121a, #1e1e2f);
+  position: fixed;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+  backdrop-filter: blur(10px);
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+  font-family: 'Inter', sans-serif;
+  z-index: 1000;
+}
+
+.modern-navbar ul {
+  list-style: none;
+  padding: 2.5rem 0;
+}
+
+.modern-navbar li a {
+  display: flex;
+  align-items: center;
+  color: #c0c0d8;
+  padding: 1rem 2rem;
+  text-decoration: none;
+  gap: 14px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border-left: 3px solid transparent;
+  position: relative;
+  overflow: hidden;
+}
+
+.modern-navbar li a::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, rgba(66, 153, 225, 0.1), transparent);
+  transition: left 0.5s ease;
+  z-index: -1;
+}
+
+.modern-navbar li a:hover::before {
+  left: 0;
+}
+
+.modern-navbar li a:hover,
+.modern-navbar li a.active {
+  background: rgba(66, 153, 225, 0.15);
+  color: #ffffff;
+  border-left: 3px solid #4299e1;
+  transform: translateX(2px);
+}
+
+.modern-navbar li a .icon {
+  font-size: 1.3em;
+  transition: transform 0.3s ease;
+}
+
+.modern-navbar li a:hover .icon {
+  transform: scale(1.1);
+}   
