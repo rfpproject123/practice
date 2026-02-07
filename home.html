@@ -4,14 +4,32 @@
     </h1>
 
     <br><br><br><br>
-    <p style="font-size: 30px; margin: -80px; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">Enter the details of your cafe or restaurent</p>
+    <p
+        style="font-size: 30px; margin: -80px; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">
+        Enter the details of your cafe or restaurent</p>
     <br><br><br><br><br><br><br>
-     <div align = "center">
-            <label for="nooftables" style="font-size: 30px; width: 200px; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font: bolder; color: white;">
-               Number of Tables in restaurent or cafe : 
-            </label>
-            <input type="integer" id="nooftables" name="tables" placeholder="No_of_Tables" style="block-size: 25px; border-color: grey; background-color: white;">
-        <br>
+    <div align="center">
+        <label for="nooftables"
+            style="font-size: 30px; width: 200px; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font: bolder; color: white;">
+            Number of Tables in restaurent or cafe :
+        </label>
+        <input type="integer" id="nooftables" name="tables" placeholder="No_of_Tables" minlength="5" maxlength="30"
+            style="block-size: 25px; border-color: grey; background-color: white;">
+        <br><br><br><br><br><br><br><br>
+        <div>
+            <label for="Table">Number of Seats in Table 1:</label>
+            <select id="Table" name="Table">
+                <option value="">-- Select --</option>
+            </select>
+        </div>
+
+        <script>
+            const select = document.getElementById("Table");
+            for (let i = 5; i <= 30; i++) {
+                const option = document.createElement("option");
+                option.value = i;
+                option.textContent = i;
+                select.appendChild(option);
+            }
+        </script>
 </center>
-
-
