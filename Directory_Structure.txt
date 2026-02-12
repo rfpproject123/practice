@@ -4,6 +4,16 @@ RFP -> static[folder]
             ->style2.css
         ->images[folder]
             -.jpg file in RFP github
+        ->pages[folder]
+            ->pages.html
+            ->cleaning.html
+            ->ready.html
+            ->table.html
+            ->home.html
+            ->payment.html
+            ->analysis.html
+        ->scripts[folder]
+            ->script.js
     -> templates[folder]
         ->mainpage.html
         ->loginpage.html
