@@ -1,5 +1,5 @@
 body {
-  background-image: url('/static/images/table6.jpg');
+  background-image: url('/static/images/cafe-tables.webp');
 }
 .navbar ul {
   list-style-type: none;
@@ -99,4 +99,4 @@ body {
 
 .modern-navbar li a:hover .icon {
   transform: scale(1.1);
-}   
+}
