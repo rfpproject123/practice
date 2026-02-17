@@ -31,12 +31,11 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
-    // Load Home by default
     loadPage("home");
 });
+
 // ----------- Dynamic Tables Functionality -----------
 
-// Handle change of number of tables (works for dynamically loaded home page)
 document.addEventListener("change", function (e) {
 
     if (e.target && e.target.id === "noOfTables") {
@@ -56,17 +55,19 @@ document.addEventListener("change", function (e) {
             div.style.marginBottom = "20px";
 
             div.innerHTML = `
-                <label style="font-size: 25px; color: white;">
-                    Number of Seats in Table ${i} :
-                </label>
-                <select class="seatSelect" data-table="${i}">
-                    <option value="">-- Select --</option>
-                    <option value="2">2</option>
-                    <option value="4">4</option>
-                    <option value="6">6</option>
-                    <option value="8">8</option>
-                    <option value="10">10</option>
-                </select>
+                <div >
+                    <label style="font-size: 25px; color: white;">
+                        Number of Seats in Table ${i} :
+                    </label>
+                    <select class="seatSelect glass-select" data-table="${i}">
+                        <option value="">-- Select --</option>
+                        <option value="2">2</option>
+                        <option value="4">4</option>
+                        <option value="6">6</option>
+                        <option value="8">8</option>
+                        <option value="10">10</option>
+                    </select>
+                </div>
             `;
 
             container.appendChild(div);
@@ -74,28 +75,6 @@ document.addEventListener("change", function (e) {
     }
 });
 
-
-// Handle confirm button click
-document.addEventListener("click", function (e) {
-
-    if (e.target && e.target.id === "generateBtn") {
-
-        const totalTables = document.getElementById("noOfTables").value;
-        const seatSelections = document.querySelectorAll(".seatSelect");
-
-        let tableData = [];
-
-        seatSelections.forEach(select => {
-            tableData.push({
-                tableNumber: select.dataset.table,
-                seats: select.value
-            });
-        });
-
-        console.log("Total Tables:", totalTables);
-        console.log("Table Data:", tableData);
-    }
-});
 // -------- Display Summary Instead of Alert --------
 
 document.addEventListener("click", function (e) {
@@ -137,26 +116,14 @@ document.addEventListener("click", function (e) {
         });
 
         output += `
-                <br>
+                
                 <p><strong>Total Seating Capacity:</strong> ${totalSeats}</p>
             </div>
         `;
 
         resultContainer.innerHTML = output;
-    }
-});
-// -------- Animate Summary Appearance --------
-// -------- Animate Summary Appearance --------
 
-document.addEventListener("click", function (e) {
-
-    if (e.target && e.target.id === "generateBtn") {
-
-        const resultContainer = document.getElementById("resultContainer");
-
-        if (!resultContainer) return;
-
-        // Reset animation so it replays every time
+        // Animate Summary Appearance
         resultContainer.style.opacity = "0";
         resultContainer.style.transform = "translateY(20px)";
 
