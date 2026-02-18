@@ -40,7 +40,7 @@ document.addEventListener("change", function (e) {
         for (let i = 1; i <= count; i++) {
             container.innerHTML += `
                 <div class="form-group">
-                    <label>Seats in Table ${i}</label>
+                    <label style="font-size:25px">Seats in Table ${i}</label>
                     <select class="input seatSelect" data-table="${i}">
                         <option value="">Select</option>
                         <option value="2">2</option>
