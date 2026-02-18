@@ -1,144 +1,58 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Table Turn Over</title>
+<div class="page">
 
-<style>
-/* Glass effect for each label + input box (container only) */
-.glass-input-row {
-    background: rgba(255,255,255,0.08);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255,255,255,0.3);
-    border-radius: 15px;
-    padding: 10px 15px;
-    display: inline-flex;
-    align-items: center;
-    gap: 15px;
-    box-shadow: 0 6px 15px rgba(0,0,0,0.25);
-}
+    <div id="formSection" class="card large center">
 
-/* Keep your existing glass effect for selects */
-.glass-select {
-    padding: 12px 20px;
-    font-size: 18px;
-    border-radius: 15px;
-    border: 1px solid rgba(255,255,255,0.4);
-    background: rgba(255,255,255,0.2);
-    color: white;
-    min-width: 200px;
-    backdrop-filter: blur(10px);
-    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
-}
-</style>
-</head>
+        <div class="page-header">
+            <h1 class="big-title" style="font-size: 100px;">Table Turn Over</h1>
+            <p class="big-subtitle">Enter details of your restaurent (or) cafe</p>
+        </div>
 
-<body>
+        <div class="form-group">
+            <label class="big-label">Number of Tables</label>
+            <select id="noOfTables" class="input large-input">
+                <option value="">Select</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+            </select>
+        </div>
 
-<center style="width: 1000px; margin-left: 200px; min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; position: relative;">
+        <div id="tablesContainer"></div>
 
-  <!-- Soft Dark Overlay -->
-  <div style="
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0,0,0,0.45);
-      z-index: -1;
-  "></div>
+        <button id="generateBtn" class="btn-primary large-btn">SUBMIT</button>
 
-  <h1 style="
-      color: white;
-      font-size: 100px;
-      text-shadow: 0 5px 25px rgba(0,0,0,0.6);
-      letter-spacing: 0px;
-      font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-      margin-bottom: 5px;
-  ">
-    Table Turn Over
-  </h1>
-  <p style="
-      font-size: 28px;
-      font-family:Arial, Helvetica, sans-serif;
-      color: #f5f5f5;
-      margin-bottom: 25px;
-  ">
-    Enter the details of your cafe or restaurant
-  </p>
-
-  <!-- Glass Card Wrapper -->
-  <div style="
-      background: rgba(255,255,255,0.08);
-      padding: 40px 60px;
-      border-radius: 25px;
-      backdrop-filter: blur(15px);
-      box-shadow: 0 25px 60px rgba(0,0,0,0.5);
-  ">
-
-    <!-- Number of Tables -->
-    <div>
-      <label for="noOfTables" style="font-size: 20px; font-family: 'Gill Sans', sans-serif; font-weight: bold; color: white;">
-        Number of Tables in cafe or restaurant:
-      </label>
-
-      <select id="noOfTables" name="noOfTables" class="glass-select">
-        <option value="">-- Select --</option>
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5</option>
-        <option value="6">6</option>
-        <option value="7">7</option>
-        <option value="8">8</option>
-        <option value="9">9</option>
-        <option value="10">10</option>
-      </select>
     </div>
 
-    <br><br>
+    <div id="summarySection" class="card large center hidden">
 
-    <!-- Dynamic Seat Dropdowns -->
-    <div id="tablesContainer"></div>
+        <div class="page-header">
+            <h1 class="big-title">Overview of Tables</h1>
+            <p class="big-subtitle">seating summary</p>
+        </div>
 
-    <br><br>
+        <div class="stats big-stats">
+            <div class="stat-box">
+                <span>Total Tables</span>
+                <h2 id="totalTablesDisplay" class="big-number">0</h2>
+            </div>
 
-    <!-- Confirm Button -->
-    <button id="generateBtn"
-      style="
-        padding:14px 35px;
-        font-size:20px;
-        background: linear-gradient(135deg, rgb(213,129,86), rgb(160,90,50));
-        border:none;
-        border-radius:30px;
-        cursor:pointer;
-        color:white;
-        box-shadow: 0 10px 25px rgba(0,0,0,0.5);
-        transition: 0.3s ease;
-      ">
-      Confirm
-    </button>
+            <div class="stat-box">
+                <span>Total Capacity</span>
+                <h2 id="totalSeatsDisplay" class="big-number">0</h2>
+            </div>
+        </div>
 
-    <!-- Summary Below Button -->
-    <div id="resultContainer"
-         style="
-            max-width: 600px;
-            margin: 30px auto 0;
-            color: white;
-            opacity: 0;
-            transform: translateY(20px);
-            transition: all 0.5s ease;
-            font-family:monospace;
-         ">
+        <div id="summaryContent" class="breakdown"></div>
+
+        <button id="editBtn" class="btn-secondary large-btn">Edit Configuration</button>
+
     </div>
 
-  </div>
-
-</center>
-
-<script src="script.js"></script>
-
-</body>
-</html>
+</div>
