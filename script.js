@@ -27,6 +27,7 @@ document.addEventListener("DOMContentLoaded", () => {
     loadPage("home");
 });
 
+
 document.addEventListener("change", function (e) {
 
     if (e.target.id === "noOfTables") {
@@ -40,8 +41,8 @@ document.addEventListener("change", function (e) {
         for (let i = 1; i <= count; i++) {
             container.innerHTML += `
                 <div class="form-group">
-                    <label style="font-size:25px">Seats in Table ${i}</label>
-                    <select class="input seatSelect" data-table="${i}">
+                    <label>Seats in Table ${i}</label>
+                    <select class="input large-input seatSelect" data-table="${i}">
                         <option value="">Select</option>
                         <option value="2">2</option>
                         <option value="4">4</option>
@@ -55,9 +56,10 @@ document.addEventListener("change", function (e) {
     }
 });
 
+
 document.addEventListener("click", function (e) {
 
-    if (e.target.id === "generateBtn") {
+    if (e.target.id === "confirmTablesBtn") {
 
         const totalTables = document.getElementById("noOfTables").value;
         const seatSelections = document.querySelectorAll(".seatSelect");
@@ -91,12 +93,17 @@ document.addEventListener("click", function (e) {
             `;
         });
 
-        document.getElementById("formSection").classList.add("hidden");
-        document.getElementById("summarySection").classList.remove("hidden");
+        document.getElementById("tableConfigSection").classList.add("hidden");
+        document.getElementById("tableOverviewSection").classList.remove("hidden");
     }
 
-    if (e.target.id === "editBtn") {
-        document.getElementById("summarySection").classList.add("hidden");
-        document.getElementById("formSection").classList.remove("hidden");
+    if (e.target.id === "editTablesBtn") {
+
+        const confirmEdit = confirm("Are you sure you want to edit the table configuration?");
+
+        if (confirmEdit) {
+            document.getElementById("tableOverviewSection").classList.add("hidden");
+            document.getElementById("tableConfigSection").classList.remove("hidden");
+        }
     }
 });
