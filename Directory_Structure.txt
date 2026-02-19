@@ -5,7 +5,6 @@ RFP -> static[folder]
         ->images[folder]
             -.jpg file in RFP github
         ->pages[folder]
-            ->pages.html
             ->cleaning.html
             ->ready.html
             ->table.html
