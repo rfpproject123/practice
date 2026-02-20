@@ -8,6 +8,10 @@ document.addEventListener("DOMContentLoaded", () => {
             .then(res => res.text())
             .then(html => {
                 content.innerHTML = html;
+
+                if (page === "table") {
+                    handleTablePageLoad();
+                }
             });
     }
 
@@ -26,6 +30,41 @@ document.addEventListener("DOMContentLoaded", () => {
 
     loadPage("home");
 });
+
+
+function handleTablePageLoad() {
+
+    const savedData = localStorage.getItem("restaurantData");
+
+    if (savedData) {
+        showOverview();
+        loadOverview();
+    } else {
+        showConfig();
+    }
+}
+
+
+function showConfig() {
+    const config = document.getElementById("tableConfigSection");
+    const overview = document.getElementById("tableOverviewSection");
+
+    if (config && overview) {
+        config.classList.remove("hidden");
+        overview.classList.add("hidden");
+    }
+}
+
+
+function showOverview() {
+    const config = document.getElementById("tableConfigSection");
+    const overview = document.getElementById("tableOverviewSection");
+
+    if (config && overview) {
+        config.classList.add("hidden");
+        overview.classList.remove("hidden");
+    }
+}
 
 
 document.addEventListener("change", function (e) {
@@ -53,6 +92,8 @@ document.addEventListener("change", function (e) {
                 </div>
             `;
         }
+
+        showConfig();
     }
 });
 
@@ -78,23 +119,14 @@ document.addEventListener("click", function (e) {
             });
         });
 
-        document.getElementById("totalTablesDisplay").innerText = totalTables;
-        document.getElementById("totalSeatsDisplay").innerText = totalSeats;
+        localStorage.setItem("restaurantData", JSON.stringify({
+            totalTables,
+            totalSeats,
+            tableData
+        }));
 
-        const container = document.getElementById("summaryContent");
-        container.innerHTML = "";
-
-        tableData.forEach(table => {
-            container.innerHTML += `
-                <div class="row">
-                    Table ${table.table}
-                    <span>${table.seats} seats</span>
-                </div>
-            `;
-        });
-
-        document.getElementById("tableConfigSection").classList.add("hidden");
-        document.getElementById("tableOverviewSection").classList.remove("hidden");
+        showOverview();
+        loadOverview();
     }
 
     if (e.target.id === "editTablesBtn") {
@@ -102,8 +134,30 @@ document.addEventListener("click", function (e) {
         const confirmEdit = confirm("Are you sure you want to edit the table configuration?");
 
         if (confirmEdit) {
-            document.getElementById("tableOverviewSection").classList.add("hidden");
-            document.getElementById("tableConfigSection").classList.remove("hidden");
+            localStorage.removeItem("restaurantData");
+            showConfig();
         }
     }
 });
+
+
+function loadOverview() {
+
+    const data = JSON.parse(localStorage.getItem("restaurantData"));
+    if (!data) return;
+
+    document.getElementById("totalTablesDisplay").innerText = data.totalTables;
+    document.getElementById("totalSeatsDisplay").innerText = data.totalSeats;
+
+    const container = document.getElementById("summaryContent");
+    container.innerHTML = "";
+
+    data.tableData.forEach(table => {
+        container.innerHTML += `
+            <div class="row">
+                Table ${table.table}
+                <span>${table.seats} seats</span>
+            </div>
+        `;
+    });
+}
