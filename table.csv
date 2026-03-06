@@ -1,6 +1,9 @@
 Table Number,Seats
 Table 1,4
-Table 2,2
+Table 2,4
+Table 3,2
+Table 4,6
+Table 5,10
 
-Total Tables,2
-Total Seats,6
+Total Tables,5
+Total Seats,26
