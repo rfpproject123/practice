@@ -1,0 +1,24 @@
+RFP -> static[folder]
+        ->css[folder]
+            ->style.css
+            ->style2.css
+        ->images[folder]
+            -.jpg file in RFP github
+        ->pages[folder]
+            ->cleaning.html
+            ->ready.html
+            ->table.html
+            ->home.html
+            ->payment.html
+            ->analysis.html
+        ->scripts[folder]
+            ->script.js
+    -> templates[folder]
+        ->mainpage.html
+        ->loginpage.html
+        ->createuser_page.html
+        ->app.html
+
+
+
+make sure to save the files with the same name ✅

@@ -1,0 +1,73 @@
+<div class="page center">
+
+    <div class="card large glass-home">
+
+        <div id="tableConfigSection">
+
+            <div class="page-header">
+                <h1 class="main-title" style="font-size: 80px;">Configure Tables</h1>
+                <p style="font-size: 25px;">Set number of tables and seating capacity</p>
+            </div>
+            <br>
+            <br>
+            <br>
+            <div class="form-group">
+                <label>Number of Tables</label>
+                <select id="noOfTables" class="input large-input">
+                    <option value="">Select</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                </select>
+            </div>
+
+            <div id="tablesContainer"></div>
+
+            <div style="margin-top:40px;">
+                <button id="confirmTablesBtn" class="btn-primary large-btn">
+                    Set Tables
+                </button>
+            </div>
+
+        </div>
+
+
+        <div id="tableOverviewSection" class="hidden">
+
+            <div class="page-header">
+                <h1 class="main-title" >Restaurant Overview</h1>
+                <p>Seating configuration summary</p>
+            </div>
+
+            <div class="stats">
+                <div class="stat-box">
+                    <span>Total Tables</span>
+                    <h2 id="totalTablesDisplay">0</h2>
+                </div>
+
+                <div class="stat-box">
+                    <span>Total Capacity</span>
+                    <h2 id="totalSeatsDisplay">0</h2>
+                </div>
+            </div>
+
+            <div id="summaryContent" class="breakdown"></div>
+
+            <div style="margin-top:40px;">
+                <button id="editTablesBtn" class="btn-secondary large-btn">
+                    Edit Tables
+                </button>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
