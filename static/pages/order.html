@@ -1,0 +1,55 @@
+<div class="page">
+    <div class="card large glass-home">
+
+        <div class="page-header">
+            <h1 class="main-title" style="font-size:60px;">New Order</h1>
+            <p class="sub-title">Enter customer details to add to the priority queue</p>
+        </div>
+
+        <!-- Allocation Result Banner -->
+        <div id="allocationBanner"
+            style="display:none; padding:16px 20px; border-radius:12px; margin-bottom:24px; font-size:16px;"></div>
+
+        <!-- Order Form -->
+        <div style="max-width:520px; margin:0 auto;">
+            <div class="form-group">
+                <label class="big-label">Customer Name</label>
+                <input class="input large-input" id="customerName" type="text" placeholder="e.g. John Doe"
+                    style="width:100%;">
+            </div>
+
+            <div class="form-group">
+                <label class="big-label">Party Size</label>
+                <select class="input large-input" id="partySize" style="width:100%;">
+                    <option value="">Select</option>
+                    <option value="2">2 People</option>
+                    <option value="4">4 People</option>
+                    <option value="6">6 People</option>
+                    <option value="8">8 People</option>
+                    <option value="10">10 People</option>
+                </select>
+            </div>
+
+            <div class="form-group" style="display:flex; align-items:center; gap:14px;">
+                <input type="checkbox" id="isVIP"
+                    style="width:20px; height:20px; accent-color:#f59e0b; cursor:pointer;">
+                <label for="isVIP" style="font-size:18px; color:#f59e0b; font-weight:700; cursor:pointer;">⭐ VIP
+                    Customer (Highest Priority)</label>
+            </div>
+
+            <button class="btn-primary large-btn" style="width:100%; margin-top:10px;" onclick="submitOrder()">
+                ➕ Add to Queue & Allocate Table
+            </button>
+        </div>
+
+        <!-- Priority Queue Display -->
+        <div style="margin-top:50px;">
+            <h2
+                style="font-size:26px; margin-bottom:16px; color:#94a3b8; border-bottom:1px solid #334155; padding-bottom:10px;">
+                📋 Priority Queue (Waiting Customers)
+            </h2>
+            <div id="priorityQueueList" class="breakdown"></div>
+        </div>
+
+    </div>
+</div>

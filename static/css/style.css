@@ -5,6 +5,7 @@ body {
     color: #e2e8f0;
     display: flex;
 }
+
 .sidebar {
     width: 240px;
     height: 100vh;
@@ -12,6 +13,7 @@ body {
     padding: 30px 0;
     position: fixed;
 }
+
 .logo {
     text-align: center;
     font-size: 26px;
@@ -19,10 +21,12 @@ body {
     margin-bottom: 50px;
     color: #3b82f6;
 }
+
 .sidebar ul {
     list-style: none;
     padding: 0;
 }
+
 .sidebar a {
     display: block;
     padding: 16px 30px;
@@ -31,11 +35,13 @@ body {
     font-size: 16px;
     transition: 0.2s;
 }
+
 .sidebar a:hover,
 .sidebar a.active {
     background: #1e293b;
     color: #fff;
 }
+
 main {
     margin-left: 240px;
     width: 100%;
@@ -49,35 +55,43 @@ main {
     width: 100%;
     max-width: 1100px;
 }
+
 .card {
     background: #1e293b;
     border-radius: 20px;
     padding: 70px;
-    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
     transition: 0.3s ease;
 }
+
 .large {
     min-height: 600px;
 }
+
 .center {
     text-align: center;
 }
+
 .big-title {
     font-size: 48px;
     margin-bottom: 15px;
 }
+
 .big-subtitle {
     font-size: 22px;
     margin-bottom: 50px;
     color: #94a3b8;
 }
+
 .big-label {
     font-size: 20px;
     margin-bottom: 10px;
 }
+
 .form-group {
     margin-bottom: 35px;
 }
+
 .input {
     padding: 12px;
     border-radius: 10px;
@@ -85,10 +99,12 @@ main {
     background: #334155;
     color: white;
 }
+
 .large-input {
     font-size: 18px;
     width: 300px;
 }
+
 .btn-primary {
     margin-top: 30px;
     padding: 14px 28px;
@@ -99,6 +115,7 @@ main {
     cursor: pointer;
     font-size: 16px;
 }
+
 .btn-secondary {
     margin-top: 40px;
     padding: 14px 28px;
@@ -109,46 +126,55 @@ main {
     cursor: pointer;
     font-size: 16px;
 }
+
 .large-btn {
     font-size: 18px;
 }
+
 .stats {
     display: flex;
     gap: 40px;
     justify-content: center;
     margin-bottom: 50px;
 }
+
 .stat-box {
     flex: 1;
     background: #334155;
     padding: 40px;
     border-radius: 16px;
 }
+
 .stat-box span {
     font-size: 18px;
     color: #94a3b8;
 }
+
 .big-number {
     font-size: 48px;
     margin-top: 15px;
 }
+
 .breakdown {
     background: #334155;
     border-radius: 16px;
     padding: 30px;
     font-size: 20px;
 }
+
 .row {
     display: flex;
     justify-content: space-between;
     padding: 16px 0;
     border-bottom: 1px solid #475569;
 }
+
 .hidden {
     display: none;
 }
+
 .table-card {
-    background: rgba(255,255,255,0.08);
+    background: rgba(255, 255, 255, 0.08);
     padding: 20px;
     margin: 15px;
     border-radius: 15px;
@@ -156,8 +182,9 @@ main {
     text-align: center;
     width: 200px;
     display: inline-block;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
 }
+
 /* ---------- Home Page Enhancements ---------- */
 
 .glass-home {
@@ -165,7 +192,7 @@ main {
     backdrop-filter: blur(20px);
     border-radius: 25px;
     padding: 60px 50px;
-    box-shadow: 0 25px 60px rgba(0,0,0,0.6);
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6);
     animation: fadeInUp 0.8s ease;
 }
 
@@ -209,8 +236,38 @@ main {
         opacity: 0;
         transform: translateY(30px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
     }
+}
+
+/* ---------- Queue Chips ---------- */
+.queue-chip {
+    display: inline-block;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 600;
+    border: none;
+    cursor: default;
+}
+
+.queue-chip.green {
+    background: #16a34a33;
+    color: #4ade80;
+    border: 1px solid #16a34a;
+}
+
+.queue-chip.orange {
+    background: #ea580c33;
+    color: #fb923c;
+    border: 1px solid #ea580c;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.queue-chip.orange:hover {
+    background: #ea580c66;
 }
