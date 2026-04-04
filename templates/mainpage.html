@@ -3,28 +3,217 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Table Turnover System</title>
-    <link rel="stylesheet" href="/static/css/style.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=DM+Serif+Display&display=swap"
+        rel="stylesheet">
+    <style>
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --bg: #0d1117;
+            --card: #161b22;
+            --border: rgba(255, 255, 255, 0.07);
+            --text: #e6edf3;
+            --muted: #7d8590;
+            --accent: #d58156;
+            --accent2: #f5c6a5;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            overflow: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: -150px;
+            right: -150px;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(213, 129, 86, 0.1) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        body::after {
+            content: '';
+            position: fixed;
+            bottom: -150px;
+            left: -150px;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(213, 129, 86, 0.06) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .container {
+            text-align: center;
+            animation: fadeUp 0.7s ease both;
+            max-width: 480px;
+            width: 100%;
+        }
+
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(24px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .brand-icon {
+            width: 64px;
+            height: 64px;
+            background: linear-gradient(135deg, var(--accent), var(--accent2));
+            border-radius: 18px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            margin-bottom: 24px;
+            box-shadow: 0 8px 32px rgba(213, 129, 86, 0.25);
+        }
+
+        h1 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 42px;
+            font-weight: 400;
+            color: var(--text);
+            margin-bottom: 12px;
+            line-height: 1.2;
+        }
+
+        .subtitle {
+            font-size: 16px;
+            color: var(--muted);
+            margin-bottom: 48px;
+            line-height: 1.6;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 14px;
+            justify-content: center;
+        }
+
+        .btn-primary {
+            padding: 13px 32px;
+            background: linear-gradient(135deg, var(--accent), #c4714a);
+            border: none;
+            border-radius: 10px;
+            color: white;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 15px;
+            font-weight: 500;
+            cursor: pointer;
+            text-decoration: none;
+            transition: opacity 0.2s, transform 0.1s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-secondary {
+            padding: 13px 32px;
+            background: transparent;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            color: var(--text);
+            font-family: 'DM Sans', sans-serif;
+            font-size: 15px;
+            font-weight: 500;
+            cursor: pointer;
+            text-decoration: none;
+            transition: border-color 0.2s, transform 0.1s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-primary:hover {
+            opacity: 0.9;
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--accent);
+            color: var(--accent2);
+        }
+
+        .btn-primary:active,
+        .btn-secondary:active {
+            transform: scale(0.97);
+        }
+
+        .divider {
+            margin: 48px auto;
+            width: 40px;
+            height: 1px;
+            background: var(--border);
+        }
+
+        .features {
+            display: flex;
+            justify-content: center;
+            gap: 32px;
+        }
+
+        .feature {
+            font-size: 13px;
+            color: var(--muted);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .feature span {
+            color: var(--accent2);
+        }
+    </style>
 </head>
 
 <body>
-    <center>
-        <br><br><br><br><br><br><br><br><br><br><br><br><br>
 
-        <h1
-            style="font-size: 100px; color: white; font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">
-            Table Turnover System</h1>
-        <h4
-            style="font-size: 25px; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; color: white;">
-            Maximizing table utilization, minimizing wait times</h4>
-        <button onclick="login_for_service()" style="width: 150px; height: 50px; font-size: 30px; background: rgb(213, 129, 86); border: 40px; border-radius: 15px;"><a
-                href="loginpage.html">login</a></button>
-        <button onclick="login_for_service()"
-            style="width: 150px; height: 80px; font-size: 30px; width: fit-content; height: 50px;  "
-            class="my-button"><a href="createuser_page.html">create account</a></button>
+    <div class="container">
 
-    </center>
-    
+        <div class="brand-icon">🍽️</div>
+
+        <h1>Table Turnover System</h1>
+        <p class="subtitle">Maximizing table utilization,<br>minimizing wait times</p>
+
+        <div class="buttons">
+            <a href="/loginpage.html" class="btn-primary">Sign In →</a>
+            <a href="/createuser_page.html" class="btn-secondary">Create Account</a>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="features">
+            <div class="feature"><span>✦</span> Smart Queues</div>
+            <div class="feature"><span>✦</span> Peak Analytics</div>
+            <div class="feature"><span>✦</span> Real-time Tracking</div>
+        </div>
+
+    </div>
+
 </body>
 
 </html>
