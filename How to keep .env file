@@ -1,0 +1,6 @@
+add in the project folder not in any static or templates add it along side of server.py 
+
+
+create a folder named .env and paste the git token and mongo db link 
+
+no need of doing any changes for .gitignore
