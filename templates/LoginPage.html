@@ -26,6 +26,7 @@
             --accent: #d58156;
             --accent2: #f5c6a5;
             --input-bg: #0d1117;
+            --error: #f87171;
         }
 
         body {
@@ -89,7 +90,6 @@
             font-family: 'DM Serif Display', serif;
             font-size: 26px;
             font-weight: 400;
-            color: var(--text);
         }
 
         .brand p {
@@ -115,7 +115,6 @@
             font-weight: 500;
             color: var(--muted);
             margin-bottom: 8px;
-            letter-spacing: 0.3px;
         }
 
         input {
@@ -162,6 +161,19 @@
             transform: scale(0.98);
         }
 
+        .btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        .error-msg {
+            color: var(--error);
+            font-size: 13px;
+            margin-top: 12px;
+            text-align: center;
+            display: none;
+        }
+
         .footer {
             text-align: center;
             margin-top: 24px;
@@ -182,44 +194,73 @@
 </head>
 
 <body>
-
     <div class="container">
-
         <div class="brand">
             <div class="brand-icon">🍽️</div>
             <h1>Table Turnover</h1>
             <p>Sign in to your dashboard</p>
         </div>
-
         <div class="card">
             <div class="field">
                 <label>Email</label>
                 <input type="email" placeholder="you@example.com" id="email">
             </div>
-
             <div class="field">
                 <label>Password</label>
                 <input type="password" placeholder="••••••••" id="password" maxlength="12">
             </div>
-
-            <button class="btn" onclick="handleLogin()">Sign In</button>
+            <button class="btn" id="loginBtn" onclick="handleLogin()">Sign In</button>
+            <p class="error-msg" id="errorMsg"></p>
         </div>
-
         <div class="footer">
             Don't have an account? <a href="/createuser_page.html">Create one</a>
         </div>
-
     </div>
-
     <script>
-        function handleLogin() {
-            const email = document.getElementById('email').value;
+        async function handleLogin() {
+            const email = document.getElementById('email').value.trim();
             const password = document.getElementById('password').value;
-            if (!email || !password) return;
-            window.location.href = '/app';
-        }
-    </script>
+            const btn = document.getElementById('loginBtn');
+            const errorMsg = document.getElementById('errorMsg');
 
+            if (!email || !password) {
+                showError('Please fill in all fields');
+                return;
+            }
+
+            btn.disabled = true;
+            btn.textContent = 'Signing in...';
+            errorMsg.style.display = 'none';
+
+            try {
+                const res = await fetch('/login', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ email, password })
+                });
+                const data = await res.json();
+                if (data.success) {
+                    window.location.href = '/app';
+                } else {
+                    showError(data.error);
+                    btn.disabled = false;
+                    btn.textContent = 'Sign In';
+                }
+            } catch (e) {
+                showError('Something went wrong. Try again.');
+                btn.disabled = false;
+                btn.textContent = 'Sign In';
+            }
+        }
+
+        function showError(msg) {
+            const el = document.getElementById('errorMsg');
+            el.textContent = msg;
+            el.style.display = 'block';
+        }
+
+        document.addEventListener('keydown', e => { if (e.key === 'Enter') handleLogin(); });
+    </script>
 </body>
 
 </html>
