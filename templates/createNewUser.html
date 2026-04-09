@@ -26,6 +26,7 @@
             --accent: #d58156;
             --accent2: #f5c6a5;
             --input-bg: #0d1117;
+            --error: #f87171;
         }
 
         body {
@@ -89,7 +90,6 @@
             font-family: 'DM Serif Display', serif;
             font-size: 26px;
             font-weight: 400;
-            color: var(--text);
         }
 
         .brand p {
@@ -124,7 +124,6 @@
             font-weight: 500;
             color: var(--muted);
             margin-bottom: 8px;
-            letter-spacing: 0.3px;
         }
 
         input {
@@ -171,6 +170,19 @@
             transform: scale(0.98);
         }
 
+        .btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        .error-msg {
+            color: var(--error);
+            font-size: 13px;
+            margin-top: 12px;
+            text-align: center;
+            display: none;
+        }
+
         .footer {
             text-align: center;
             margin-top: 24px;
@@ -191,15 +203,12 @@
 </head>
 
 <body>
-
     <div class="container">
-
         <div class="brand">
             <div class="brand-icon">🍽️</div>
             <h1>Create Account</h1>
             <p>Set up your Table Turnover account</p>
         </div>
-
         <div class="card">
             <div class="row">
                 <div class="field">
@@ -211,36 +220,68 @@
                     <input type="text" placeholder="Doe" id="lname">
                 </div>
             </div>
-
             <div class="field">
                 <label>Email</label>
                 <input type="email" placeholder="you@example.com" id="email">
             </div>
-
             <div class="field">
                 <label>Password</label>
                 <input type="password" placeholder="••••••••" id="password" maxlength="12">
             </div>
-
-            <button class="btn" onclick="handleCreate()">Create Account</button>
+            <button class="btn" id="registerBtn" onclick="handleCreate()">Create Account</button>
+            <p class="error-msg" id="errorMsg"></p>
         </div>
-
         <div class="footer">
             Already have an account? <a href="/loginpage.html">Sign in</a>
         </div>
-
     </div>
-
     <script>
-        function handleCreate() {
-            const fname = document.getElementById('fname').value;
-            const email = document.getElementById('email').value;
+        async function handleCreate() {
+            const firstName = document.getElementById('fname').value.trim();
+            const lastName = document.getElementById('lname').value.trim();
+            const email = document.getElementById('email').value.trim();
             const password = document.getElementById('password').value;
-            if (!fname || !email || !password) return;
-            window.location.href = '/app';
-        }
-    </script>
+            const btn = document.getElementById('registerBtn');
+            const errorMsg = document.getElementById('errorMsg');
 
+            if (!firstName || !email || !password) {
+                showError('First name, email and password are required');
+                return;
+            }
+
+            btn.disabled = true;
+            btn.textContent = 'Creating account...';
+            errorMsg.style.display = 'none';
+
+            try {
+                const res = await fetch('/register', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ firstName, lastName, email, password })
+                });
+                const data = await res.json();
+                if (data.success) {
+                    window.location.href = '/app';
+                } else {
+                    showError(data.error);
+                    btn.disabled = false;
+                    btn.textContent = 'Create Account';
+                }
+            } catch (e) {
+                showError('Something went wrong. Try again.');
+                btn.disabled = false;
+                btn.textContent = 'Create Account';
+            }
+        }
+
+        function showError(msg) {
+            const el = document.getElementById('errorMsg');
+            el.textContent = msg;
+            el.style.display = 'block';
+        }
+
+        document.addEventListener('keydown', e => { if (e.key === 'Enter') handleCreate(); });
+    </script>
 </body>
 
 </html>
