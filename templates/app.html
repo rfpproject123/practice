@@ -1,26 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Table Turnover</title>
     <link rel="stylesheet" href="/static/css/style2.css">
+    <style>
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .logout-btn {
+            display: block;
+            margin: 20px;
+            padding: 12px 20px;
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            color: #94a3b8;
+            text-align: center;
+            text-decoration: none;
+            font-size: 14px;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .logout-btn:hover {
+            background: #1e293b;
+            color: #f87171;
+            border-color: #f87171;
+        }
+    </style>
 </head>
+
 <body>
 
-<nav class="sidebar">
-    <ul>
-        <li><a href="#" class="nav-item active" data-target="home">Home</a></li>
-        <li><a href="#" class="nav-item" data-target="table">Table</a></li>
-        <li><a href="#" class="nav-item" data-target="ready">Ready</a></li>
-        <li><a href="#" class="nav-item" data-target="cleaning">Cleaning</a></li>
-        <li><a href="#" class="nav-item" data-target="payment">Payment</a></li>
-        <li><a href="#" class="nav-item" data-target="analysis">Analysis</a></li>
-        <li><a href="#" class="nav-item" data-target="dashboard">Dashboard</a></li>
-    </ul>
-</nav>
+    <nav class="sidebar">
+        <ul>
+            <li><a href="#" class="nav-item active" data-target="home">Home</a></li>
+            <li><a href="#" class="nav-item" data-target="table">Table</a></li>
+            <li><a href="#" class="nav-item" data-target="ready">Ready</a></li>
+            <li><a href="#" class="nav-item" data-target="cleaning">Cleaning</a></li>
+            <li><a href="#" class="nav-item" data-target="payment">Payment</a></li>
+            <li><a href="#" class="nav-item" data-target="analysis">Analysis</a></li>
+            <li><a href="#" class="nav-item" data-target="dashboard">Dashboard</a></li>
+        </ul>
 
-<main id="content"></main>
+        <a href="/logout" class="logout-btn">⎋ Logout</a>
+    </nav>
 
-<script src="/static/scripts/script.js"></script>
+    <main id="content"></main>
+
+    <script src="/static/scripts/script.js"></script>
 </body>
+
 </html>
